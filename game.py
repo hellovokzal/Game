@@ -41,9 +41,9 @@ def error(e):
 </html>
 """
 
-@app.errorhandler(500)
+@app.errorhandler(404)
 
-def error(e):
+def error1(e):
 	return """
  <!DOCTYPE html>
 <html>
