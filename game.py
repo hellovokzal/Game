@@ -3,7 +3,7 @@ from requests import post, get
 
 app = Flask(__name__)
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/<path:message>", methods=['GET', 'POST'])
 def echo1():
     if request.method == 'POST':
         data = request.get_json()
