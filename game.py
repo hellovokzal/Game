@@ -41,5 +41,21 @@ def error(e):
 </html>
 """
 
+@app.errorhandler(500)
+
+def error(e):
+	return """
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>404 Not Found</title>
+</head>
+<body>
+  <h1>404 Not Found</h1>
+  <p>Ссылка пустая!</p>
+</body>
+</html>
+"""
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
