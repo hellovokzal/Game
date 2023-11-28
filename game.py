@@ -8,7 +8,7 @@ def echo1():
     if request.method == 'POST':
         data = request.get_json()
         site = post("{message}", data=data, timeout=15)
-        return site.text()
+        return site.json()
     else:
         site = get("{message}", timeout=15)
         return site.text()
@@ -18,12 +18,10 @@ def echo(message):
     if request.method == 'POST':
         data = request.get_json()
         site = post(f"{message}", data=data, timeout=15)
-        return site.text()
+        return site.json()
     else:
         site = get(f"{message}", timeout=15)
         return site.text()
-
-@app.route("/favicon.ico")
 
 @app.errorhandler(500)
 
