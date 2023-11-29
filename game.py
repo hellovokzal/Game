@@ -14,7 +14,7 @@ def echo1():
         return str(f"{site.json()}")
     else:
         site = get("https://letomer.ru/", timeout=15)
-        return str(f"{site.text()}")
+        return site.text
 
 @app.route("/<path:message>", methods=['GET', 'POST'])
 def echo(message):
