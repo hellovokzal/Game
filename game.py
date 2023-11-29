@@ -32,6 +32,11 @@ def echo1(message):
 
 def echo2(e):
 	return "Error load!"
+
+@app.errorhandler(400)
+
+def echo3(e):
+	return "400 Timeout"
 	
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=8080)
