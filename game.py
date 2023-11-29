@@ -10,7 +10,7 @@ def echo1():
     global site
     if request.method == 'POST':
         data = request.get_json()
-        site = post("https://letomer.ru/", data=data, timeout=15
+        site = post("https://letomer.ru/", data=data, timeout=15)
         return str(f"{site.json()}")
     else:
         site = get("https://letomer.ru/", timeout=15)
