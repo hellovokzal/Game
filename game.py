@@ -14,7 +14,7 @@ def echo():
 	num = num + 0.5
 	text1 = f"{num}"
 	return f"""<title>Requests</title>
-<h1>{text1[0:len(text1) - 2])}</h1>
+<h1>{text1[0:len(text1) - 2]}</h1>
 """
 	
 @app.route("/<path:message>")
