@@ -39,18 +39,18 @@ def error(e):
 </html>
 """
 
-@app.errorhandler(500)
+@app.errorhandler(404)
 
 def error1(e):
 	return """
  <!DOCTYPE html>
 <html>
 <head>
-  <title>500 Error Loading</title>
+  <title>Not Found</title>
 </head>
 <body>
-  <h1>500 Error Loading</h1>
-  <p>Ошибка загрузки!</p>
+  <h1>Not Found</h1>
+  <p>Not Loading</p>
 </body>
 </html>
 """
