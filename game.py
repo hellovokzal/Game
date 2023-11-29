@@ -8,14 +8,14 @@ app = Flask(__name__)
 
 def echo():
 	global num
-	num = num + 0.5
+	num = num + 0.5[0:len(num - 2)]
 	return str(num)
 	
 @app.route("/<path:message>")
 
 def echo1(message):
 	global num
-	num = num + 0.5
+	num = num + 0.5[0:len(num - 2)]
 	return f"""<title>{message}</title>
 <h1>{num}</h1>
 """
