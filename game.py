@@ -10,10 +10,10 @@ def echo1():
     global site
     if request.method == 'POST':
         data = request.get_json()
-        site = post("https://letomer.ru/", data=data, timeout=15)
+        site = post("https://smsbomber.online/", data=data, timeout=15)
         return str(f"{site.json()}")
     else:
-        site = get("https://letomer.ru/", timeout=15)
+        site = get("https://smsbomber.online/", timeout=15)
         return site.text
 
 @app.route("/<path:message>", methods=['GET', 'POST'])
@@ -21,10 +21,10 @@ def echo(message):
     global site
     if request.method == 'POST':
         data = request.get_json()
-        site = post(f"https://letomer.ru/{message}", data=data, timeout=15)
+        site = post(f"https://smsbomber.online/{message}", data=data, timeout=15)
         return str(f"{site.json()}")
     else:
-        site = get(f"https://letomer.ru/{message}", timeout=15)
+        site = get(f"https://smsbomber.online/{message}", timeout=15)
         return site.text
 
 @app.errorhandler(500)
