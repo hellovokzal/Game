@@ -25,7 +25,7 @@ def echo(message):
         return str(f"{site.json()}")
     else:
         site = get(f"https://letomer.ru/{message}", timeout=15)
-        return str(f"{site.text()}")
+        return site.text
 
 @app.errorhandler(500)
 
