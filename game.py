@@ -1,63 +1,29 @@
-from flask import Flask, request, jsonify
-from requests import post, get
+from flask import Flask
 
-site = ""
+num = 0
 
 app = Flask(__name__)
 
-@app.route("/", methods=['GET', 'POST'])
-def echo1():
-    global site
-    if request.method == 'POST':
-        data = request.get_json()
-        site = post("https://smsbomber.online/", data=data, timeout=15)
-        return str(f"{site.json()}")
-    else:
-        site = get("https://smsbomber.online/", timeout=15)
-        return site.text
+@app.route("/")
 
-@app.route("/<path:message>", methods=['GET', 'POST'])
-def echo(message):
-    global site
-    if request.method == 'POST':
-        data = request.get_json()
-        site = post(f"https://smsbomber.online/{message}", data=data, timeout=15)
-        return str(f"{site.json()}")
-    else:
-        site = get(f"https://smsbomber.online/{message}", timeout=15)
-        return site.text
+def echo():
+	global num
+	num = num + 1
+	return str(num)
+	
+@app.route("/<path:message>")
+
+def echo1(message):
+	global num
+	num = num + 1
+	return f"""<title>{message}</title>
+<h1>{num}</h1>
+"""
 
 @app.errorhandler(500)
 
-def error(e):
-	return """
- <!DOCTYPE html>
-<html>
-<head>
-  <title>500 Internal Server Error</title>
-</head>
-<body>
-  <h1>500 Internal Server Error</h1>
-  <p>Не удалось загрузить сайт!</p>
-</body>
-</html>
-"""
-
-@app.errorhandler(404)
-
-def error1(e):
-	return """
- <!DOCTYPE html>
-<html>
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1>
-  <p>Not Loading</p>
-</body>
-</html>
-"""
-
+def echo2(e):
+	return "Error load!"
+	
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+	app.run(host="0.0.0.0", port=8080)
