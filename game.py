@@ -1,10 +1,13 @@
 from flask import Flask, request, jsonify
 from requests import post, get
 
+site = ""
+
 app = Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
 def echo1():
+    global site
     if request.method == 'POST':
         data = request.get_json()
         site = post("http://arch.ksys.ru/", data=data, timeout=15)
@@ -15,6 +18,7 @@ def echo1():
 
 @app.route("/<path:message>", methods=['GET', 'POST'])
 def echo(message):
+    global site
     if request.method == 'POST':
         data = request.get_json()
         site = post(f"http://arch.ksys.ru/{message}", data=data, timeout=15)
