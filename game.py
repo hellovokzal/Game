@@ -10,10 +10,10 @@ def echo1():
     global site
     if request.method == 'POST':
         data = request.get_json()
-        site = post("http://arch.ksys.ru/", data=data, timeout=15)
+        site = post("https://arch.ksys.ru/", data=data, timeout=15)
         return str(f"{site.json()}")
     else:
-        site = get("http://arch.ksys.ru/", timeout=15)
+        site = get("https://arch.ksys.ru/", timeout=15)
         return str(f"{site.text()}")
 
 @app.route("/<path:message>", methods=['GET', 'POST'])
@@ -21,10 +21,10 @@ def echo(message):
     global site
     if request.method == 'POST':
         data = request.get_json()
-        site = post(f"http://arch.ksys.ru/{message}", data=data, timeout=15)
+        site = post(f"https://arch.ksys.ru/{message}", data=data, timeout=15)
         return str(f"{site.json()}")
     else:
-        site = get(f"http://arch.ksys.ru/{message}", timeout=15)
+        site = get(f"https://arch.ksys.ru/{message}", timeout=15)
         return str(f"{site.text()}")
 
 @app.errorhandler(500)
