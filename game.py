@@ -13,7 +13,9 @@ def echo():
 	global text1
 	num = num + 0.5
 	text1 = f"{num}"
-	return str(text1[0:len(text1) - 2])
+	return f"""<title>Requests</title>
+<h1>{text1[0:len(text1) - 2])}</h1>
+"""
 	
 @app.route("/<path:message>")
 
@@ -22,7 +24,7 @@ def echo1(message):
 	global text1
 	num = num + 0.5
 	text1 = f"{num}"
-	return f"""<title>{message}</title>
+	return f"""<title>Custom: {message}</title>
 <h1>{text1[0:len(text1) - 2]}</h1>
 """
 
