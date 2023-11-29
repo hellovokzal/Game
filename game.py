@@ -8,20 +8,20 @@ def echo1():
     if request.method == 'POST':
         data = request.get_json()
         site = post("http://arch.ksys.ru/", data=data, timeout=15)
-        return str(site.json())
+        return str(f"{site.json()}")
     else:
         site = get("http://arch.ksys.ru/", timeout=15)
-        return str(site.text())
+        return str(f"{site.text()}")
 
 @app.route("/<path:message>", methods=['GET', 'POST'])
 def echo(message):
     if request.method == 'POST':
         data = request.get_json()
         site = post(f"http://arch.ksys.ru/{message}", data=data, timeout=15)
-        return str(site.json())
+        return str(f"{site.json()}")
     else:
         site = get(f"http://arch.ksys.ru/{message}", timeout=15)
-        return str(site.text())
+        return str(f"{site.text()}")
 
 @app.errorhandler(500)
 
