@@ -3,24 +3,24 @@ from requests import post, get
 
 app = Flask(__name__)
 
-@app.route("/<path:message>", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def echo1():
     if request.method == 'POST':
         data = request.get_json()
-        site = post("{message}", data=data, timeout=15)
+        site = post("http://arch.ksys.ru/", data=data, timeout=15)
         return site.json()
     else:
-        site = get("{message}", timeout=15)
+        site = get("http://arch.ksys.ru/", timeout=15)
         return site.text()
 
 @app.route("/<path:message>", methods=['GET', 'POST'])
 def echo(message):
     if request.method == 'POST':
         data = request.get_json()
-        site = post(f"{message}", data=data, timeout=15)
+        site = post(f"http://arch.ksys.ru/{message}", data=data, timeout=15)
         return site.json()
     else:
-        site = get(f"{message}", timeout=15)
+        site = get(f"http://arch.ksys.ru/{message}", timeout=15)
         return site.text()
 
 @app.errorhandler(500)
@@ -39,18 +39,18 @@ def error(e):
 </html>
 """
 
-@app.errorhandler(404)
+@app.errorhandler(500)
 
 def error1(e):
 	return """
  <!DOCTYPE html>
 <html>
 <head>
-  <title>404 Not Found</title>
+  <title>500 Error Loading</title>
 </head>
 <body>
-  <h1>404 Not Found</h1>
-  <p>Ссылка пустая!</p>
+  <h1>500 Error Loading</h1>
+  <p>Ошибка загрузки!</p>
 </body>
 </html>
 """
