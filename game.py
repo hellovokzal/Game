@@ -2,22 +2,28 @@ from flask import Flask
 
 num = 0
 
+text1 = ""
+
 app = Flask(__name__)
 
 @app.route("/")
 
 def echo():
 	global num
-	num = num + 0.5[0:len(num - 2)]
-	return str(num)
+	global text1
+	num = num + 0.5
+	text1 = f"{num}"
+	return str(text1[0:len(text1) - 2])
 	
 @app.route("/<path:message>")
 
 def echo1(message):
 	global num
-	num = num + 0.5[0:len(num - 2)]
+	global text1
+	num = num + 0.5
+	text1 = f"{num}"
 	return f"""<title>{message}</title>
-<h1>{num}</h1>
+<h1>{text1[0:len(text1) - 2]}</h1>
 """
 
 @app.errorhandler(500)
